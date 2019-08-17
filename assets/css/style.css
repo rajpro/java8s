@@ -3904,7 +3904,7 @@ ul#cat_nav li {
 	width: 430px;
 	padding: 45px 60px 60px;
 	position: absolute;
-	left: 0;
+	left: 35.833333333333334%;
 	top: 0;
 	overflow-y: auto;
 	background-color: #fff;
@@ -4242,7 +4242,7 @@ textarea:-webkit-autofill {
 
 .bs-wizard {
 	width: 100%;
-	margin: 50px auto 0
+	margin: 0px auto 40px;
 }
 
 .bs-wizard>.bs-wizard-step {
@@ -4269,7 +4269,7 @@ textarea:-webkit-autofill {
 }
 
 .bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot {
-	background-color: #392779
+	background-color: #fff
 }
 
 .bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot:after {
@@ -4302,8 +4302,8 @@ textarea:-webkit-autofill {
 	margin-top: -5px;
 	margin-left: -25px;
 	border-radius: 50%;
-	border: 2px solid #fff;
-	background-color: #392779
+	border: 2px solid #392779;
+	background-color: #392779;
 }
 
 .bs-wizard>.bs-wizard-step>.bs-wizard-dot:after {
@@ -4339,7 +4339,7 @@ textarea:-webkit-autofill {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	background: #fff
+	background: #e9ecef;
 }
 
 .table.cart-list {

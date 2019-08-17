@@ -24,8 +24,21 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function cart()
+	public function cart($url="")
 	{
-		$this->load->view('welcome_message');
+		$data['page'] = 'theia-exception';
+		$this->load->view('template/header', $data);
+		switch ($url) {
+			case 'payment':
+				$this->load->view('home/cart-two', $data);
+				break;
+			case 'finish':
+				$this->load->view('home/cart-three', $data);
+				break;
+			default:
+				$this->load->view('home/cart-one', $data);
+				break;
+		}
+		$this->load->view('template/footer', $data);
 	}
 }
