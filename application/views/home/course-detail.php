@@ -23,42 +23,7 @@
                     
                     <section id="description">
                         <h2>Description</h2>
-                        <p>Per consequat adolescens ex, cu nibh commune temporibus vim, ad sumo viris eloquentiam sed. Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-                        <h5>What will you learn</h5>
-                        <ul class="list_ok">
-                            <li>
-                                <h6>Suas summo id sed erat erant oporteat</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
-                            <li>
-                                <h6>Illud singulis indoctum ad sed</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
-                            <li>
-                                <h6>Alterum bonorum mentitum an mel</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
-                        </ul>
-                        <hr>
-                        <p>Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="bullets">
-                                    <li>Dolorem mediocritatem</li>
-                                    <li>Mea appareat</li>
-                                    <li>Prima causae</li>
-                                    <li>Singulis indoctum</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="bullets">
-                                    <li>Timeam inimicus</li>
-                                    <li>Oportere democritum</li>
-                                    <li>Cetero inermis</li>
-                                    <li>Pertinacia eum</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <?=$course_detail['p_content']?>
                         <!-- /row -->
                     </section>
                     <!-- /section -->
@@ -72,95 +37,27 @@
                             </ul>
                         </div>
                         <div id="accordion_lessons" role="tablist" class="add_bottom_45">
+                            <?php $show = 'show';if(!empty($course_lessons)):foreach($course_lessons as $key => $cl): ?>
                             <div class="card">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab" id="heading<?=$key?>">
                                     <h5 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="indicator ti-minus"></i> Introdocution</a>
+                                        <a data-toggle="collapse" href="#collapse<?=$key?>" aria-expanded="true" aria-controls="collapse<?=$key?>"><i class="indicator ti-minus"></i><?=$cl['s_name']?></a>
                                     </h5>
                                 </div>
 
-                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion_lessons">
+                                <div id="collapse<?=$key?>" class="collapse <?=($show=='show'?'show':'hide')?>" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion_lessons">
                                     <div class="card-body">
                                         <div class="list_lessons">
                                             <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
+                                                <?php if($cl['s_lession']):foreach($cl['s_lession'] as $sl):?>
+                                                <li><a href="<?=$sl['p_url']?>" class=""> <?=$sl['p_title']?> </a><span>00:00</span></li>
+                                                <?php endforeach;endif;?>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /card -->
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="indicator ti-plus"></i>Generative Modeling Review
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /card -->
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingThree">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <i class="indicator ti-plus"></i>Variational Autoencoders
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /card -->
-
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingFourth">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">
-                                            <i class="indicator ti-plus"></i>Gaussian Mixture Model Review
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseFourth" class="collapse" role="tabpanel" aria-labelledby="headingFourth" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php $show='hide'; endforeach;endif; ?>
                             <!-- /card -->
                         </div>
                         <!-- /accordion -->
@@ -304,7 +201,7 @@
                         <div class="price">
                             $29<span class="original_price"><em>$49</em>60% discount price</span>
                         </div>
-                        <a href="cart-1.html" class="btn_1 full-width">Purchase</a>
+                        <a href="#" data-purchase="<?=$course_detail['p_id']?>" class="btn_1 full-width">Purchase</a>
                         <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
                         <div id="list_feat">
                             <h3>What's includes</h3>

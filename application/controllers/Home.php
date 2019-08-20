@@ -3,11 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('HomeDB');
+	}
+
 	public function index()
 	{
-		$this->load->view('template/header');
-		$this->load->view('home/index');
-		$this->load->view('template/footer');
+		$data['courses'] = $this->HomeDB->courses();
+		$this->load->view('template/header', $data);
+		$this->load->view('home/index', $data);
+		$this->load->view('template/footer', $data);
 	}
 
 	public function courses()
@@ -17,11 +23,14 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function course_detail()
+	public function course_detail($url)
 	{
-		$this->load->view('template/header');
-		$this->load->view('home/course-detail');
-		$this->load->view('template/footer');
+		$data['courses'] = $this->HomeDB->courses();
+		$data['course_detail'] = $this->HomeDB->course_detail($url);
+		$data['course_lessons'] = $this->HomeDB->course_lessons($url);
+		$this->load->view('template/header', $data);
+		$this->load->view('home/course-detail', $data);
+		$this->load->view('template/footer', $data);
 	}
 
 	public function cart($url="")

@@ -68,6 +68,25 @@
     <script src="<?=base_url('assets')?>/js/common_scripts.js"></script>
     <script src="<?=base_url('assets')?>/js/main.js"></script>
 	<script src="<?=base_url('assets')?>/js/validate.js"></script>
+	<script>
+		$(window).scroll(function() {
+			var count = 0;
+			// console.log($(document).height());
+			// console.log($(window).height());
+			// console.log($(window).scrollTop() + $(window).height());
+			if(count==0) {
+				console.log("counting"+count);
+				if($(window).scrollTop() + $(window).height() > 900) {
+					count = 1;
+					console.log("working"+count);
+					break;
+				}
+			}
+			// if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+			// 	alert("near bottom!");
+			// }
+		});
+	</script>
 	
 </body>
 </html>

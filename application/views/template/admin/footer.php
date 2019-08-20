@@ -45,6 +45,7 @@
     <script src="<?=base_url('assets/vendor')?>/js/admin-charts.js"></script>
 
     <script>
+      // CK Editor Initialization
       CKEDITOR.replace( 'content' );
     </script>
 	

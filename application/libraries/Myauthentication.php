@@ -14,4 +14,12 @@ class Myauthentication {
             redirect(base_url('dashbaord'));
         }
     }
+
+    public function internal_check() {
+        if(!empty($this->CI->session->userdata['usertype']) && $this->CI->session->userdata['usertype']!='student') {
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

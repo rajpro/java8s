@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Udema a modern educational site template">
     <meta name="author" content="Ansonika">
-    <title>UDEMA | Modern Educational site template</title>
+    <title>Java8s | Boostup you'r Career with us.</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -38,17 +38,17 @@
 	<header class="header menu_2">
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Preload -->
 		<div id="logo">
-			<a href="index.html"><img src="<?=base_url('assets')?>/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+			<a href="<?=base_url()?>">
+				<h2>JAVA8S</h2>
+			</a>
 		</div>
 		<ul id="top_menu">
 			<li><a href="login.html" class="login-two">
-				<i class="fa fa-user"></i>
+				<span class="badge bg-warning">0</span>
+				<i class="fa fa-2x fa-cart-plus"></i>
 			</a></li>
-			<li><a href="login.html" class="login-two">
-				<i class="fa fa-user"></i>
-			</a></li>
-			<li><a href="login.html" class="login-two">
-				<i class="fa fa-user"></i>
+			<li><a href="<?=base_url('auth/login')?>" class="login-two">
+				<i class="fa fa-2x fa-lock"></i>
 			</a></li>
 		</ul>
 		<!-- /top_menu -->
@@ -63,14 +63,9 @@
 			<ul>
 				<li><span><a href="#0">Courses</a></span>
 					<ul>
-						<li><a href="courses-grid.html">Courses grid</a></li>
-						<li><a href="courses-grid-sidebar.html">Courses grid sidebar</a></li>
-						<li><a href="courses-list.html">Courses list</a></li>
-						<li><a href="courses-list-sidebar.html">Courses list sidebar</a></li>
-						<li><a href="course-detail.html">Course detail</a></li>
-                        <li><a href="course-detail-2.html">Course detail working form</a></li>
-						<li><a href="admission.html">Admission wizard</a></li>
-						<li><a href="teacher-detail.html">Teacher detail</a></li>
+						<?php if(!empty($courses)):foreach($courses as $course): ?>
+						<li><a href="<?=base_url('course-detail/'.$course['url'])?>"><?=$course['title']?></a></li>
+						<?php endforeach;endif; ?>
 					</ul>
 				</li>
 			</ul>

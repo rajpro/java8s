@@ -6,8 +6,18 @@
     display: block;
     width: 25px;
     height: 25px;
-    text-indent: -9999px;
     position: relative;
-    top: -5px;
+    top: 5px;
+    color:white;
+}
+.login-two .badge {
+    position: absolute;
+    top: -6px;
+    left: 17px;
+}
+#logo a h2 {
+    padding-top: 5px;
+    margin: 0;
+    font-weight: 800;
     color:white;
 }
