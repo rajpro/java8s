@@ -46,12 +46,8 @@
                 <figure>
                     <a href="index.html"><img src="<?=base_url('assets')?>/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
                 </figure>
-                <?php 
-                    if(!empty($this->session->userdata('success'))){
-                        echo $this->session->userdata('success');
-                    }
-                ?>
-                <?php echo form_open(base_url('auth/login')); ?>
+                <?php echo validation_errors('<div class="error">', '</div>'); ?>
+                <?php echo form_open(base_url('auth/register')); ?>
                     <!-- <div class="access_social">
                         <a href="#0" class="social_bt facebook">Login with Facebook</a>
                         <a href="#0" class="social_bt google">Login with Google</a>
@@ -59,6 +55,14 @@
                     </div>
                     <div class="divider"><span>Or</span></div> -->
                     <div class="form-group">
+
+                        <span class="input">
+                        <input class="input_field" type="text" autocomplete="off" name="name">
+                            <label class="input_label">
+                            <span class="input__label-content">Your Name</span>
+                        </label>
+                        </span>
+
                         <span class="input">
                         <input class="input_field" type="email" autocomplete="off" name="email">
                             <label class="input_label">
@@ -67,15 +71,21 @@
                         </span>
 
                         <span class="input">
-                        <input class="input_field" type="password" autocomplete="new-password" name="password">
+                        <input class="input_field" type="password" autocomplete="password" name="password">
                             <label class="input_label">
                             <span class="input__label-content">Your password</span>
                         </label>
                         </span>
-                        <small><a href="<?=base_url('auth/forgot_password')?>">Forgot password?</a></small>
+
+                        <span class="input">
+                        <input class="input_field" type="password" autocomplete="confirm-password" name="confirm-password">
+                            <label class="input_label">
+                            <span class="input__label-content">Confirm password</span>
+                        </label>
+                        </span>
                     </div>
                     <button type="submit"  class="btn_1 rounded full-width add_top_60">Login to Java8s</button>
-                    <div class="text-center add_top_10">New to Java8s? <strong><a href="<?=base_url('auth/register')?>">Sign up!</a></strong></div>
+                    <div class="text-center add_top_10">Back to Java8s? <strong><a href="<?=base_url('auth/login')?>">Login!</a></strong></div>
                 </form>
                 <div class="copy">© 2017 Java8s</div>
             </aside>

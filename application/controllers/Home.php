@@ -18,9 +18,11 @@ class Home extends CI_Controller {
 
 	public function courses()
 	{
-		$this->load->view('template/header');
-		$this->load->view('home/course-grid');
-		$this->load->view('template/footer');
+		$data['courses'] = $this->HomeDB->courses();
+		$data['course_details'] = $this->HomeDB->list_all_course_detail();
+		$this->load->view('template/header', $data);
+		$this->load->view('home/course-grid', $data);
+		$this->load->view('template/footer', $data);
 	}
 
 	public function course_detail($url)

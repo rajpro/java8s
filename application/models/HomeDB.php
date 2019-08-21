@@ -17,8 +17,13 @@ class HomeDB extends CI_Model {
         return $this->db->get_where($this->post, ['p_status'=>1, 'p_content_type'=>'course'])->result_array();
     }
 
+    public function list_all_course_detail() {
+        $this->db->select("p_id, p_title, p_url, p_excerpt_content");
+        return $this->db->get_where($this->post, ['p_status'=>1, 'p_content_type'=>'course'])->result_array();
+    }
+
     public function course_detail($url) {
-        $this->db->select("p_id, p_title, p_url, p_content, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id=st_post.p_id) as lesson_count");
+        $this->db->select("p_id, p_title, p_url, p_content, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id IN (SELECT s_id FROM st_section WHERE s_course_id=st_post.p_id)) as lesson_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting");
         return $this->db->get_where($this->post, ['p_url'=>$url])->row_array();
     }
 

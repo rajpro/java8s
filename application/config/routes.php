@@ -53,3 +53,5 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['course-detail/(:any)'] = 'home/course_detail/$1';
+$route['courses'] = 'home/courses';
+$route['courses/(:num)'] = 'home/courses/$1';

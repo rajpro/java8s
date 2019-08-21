@@ -32,7 +32,7 @@
                         <div class="intro_title">
                             <h2>Lessons</h2>
                             <ul>
-                                <li>18 lessons</li>
+                                <li><?=$course_detail['lesson_count']?> lessons</li>
                                 <li>01:02:10</li>
                             </ul>
                         </div>
@@ -131,7 +131,7 @@
                         <hr>
 
                         <div class="reviews-container">
-
+                            <?php $j=0; for($i=0;$i<3;$i++): ?>
                             <div class="review-box clearfix">
                                 <figure class="rev-thumb"><img src="<?=base_url('assets')?>/img/avatar1.jpg" alt="">
                                 </figure>
@@ -148,43 +148,27 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- /review-box -->
-                            <div class="review-box clearfix">
-                                <figure class="rev-thumb"><img src="<?=base_url('assets')?>/img/avatar2.jpg" alt="">
-                                </figure>
-                                <div class="rev-content">
-                                    <div class="rating">
-                                        <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                    </div>
-                                    <div class="rev-info">
-                                        Ahsan – April 01, 2016:
-                                    </div>
-                                    <div class="rev-text">
-                                        <p>
-                                            Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /review-box -->
-                            <div class="review-box clearfix">
-                                <figure class="rev-thumb"><img src="<?=base_url('assets')?>/img/avatar3.jpg" alt="">
-                                </figure>
-                                <div class="rev-content">
-                                    <div class="rating">
-                                        <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                    </div>
-                                    <div class="rev-info">
-                                        Sara – March 31, 2016:
-                                    </div>
-                                    <div class="rev-text">
-                                        <p>
-                                            Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                        </p>
+                                <?php if($j<2): ?>
+                                <div class="review-box mt-4 clearfix">
+                                    <figure class="rev-thumb"><img src="<?=base_url('assets')?>/img/avatar1.jpg" alt="">
+                                    </figure>
+                                    <div class="rev-content">
+                                        <div class="rating">
+                                            <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
+                                        </div>
+                                        <div class="rev-info">
+                                            Admin – April 03, 2016:
+                                        </div>
+                                        <div class="rev-text">
+                                            <p>
+                                                Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+                                <?php $j++; endif; ?>
                             </div>
+                            <?php endfor;?>
                             <!-- /review-box -->
                         </div>
                         <!-- /review-container -->
@@ -199,7 +183,16 @@
                             <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="<?=base_url('assets')?>/img/course_1.jpg" alt="" class="img-fluid"><span>View course preview</span></a>
                         </figure>
                         <div class="price">
-                            $29<span class="original_price"><em>$49</em>60% discount price</span>
+                            <?php $course_detail['setting'] = json_decode($course_detail['setting']);?>
+                            <i class="fa fa-rupee" style="font-size:27px;"></i><?=$course_detail['setting']->sale_price?>
+                            <span class="original_price">
+                                <em><i class="fa fa-rupee" style="font-size:14px;"></i><?=$course_detail['setting']->price?></em>
+                                <?php 
+                                    $sv = $course_detail['setting']->price - $course_detail['setting']->sale_price;
+                                    $discount = (100/$course_detail['setting']->price*$sv);
+                                    echo round($discount)." % discount price";
+                                ?>
+                            </span>
                         </div>
                         <a href="#" data-purchase="<?=$course_detail['p_id']?>" class="btn_1 full-width">Purchase</a>
                         <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>

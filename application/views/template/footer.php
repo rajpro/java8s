@@ -74,14 +74,14 @@
 			// console.log($(document).height());
 			// console.log($(window).height());
 			// console.log($(window).scrollTop() + $(window).height());
-			if(count==0) {
-				console.log("counting"+count);
-				if($(window).scrollTop() + $(window).height() > 900) {
-					count = 1;
-					console.log("working"+count);
-					break;
-				}
-			}
+			// if(count==0) {
+			// 	console.log("counting"+count);
+			// 	if($(window).scrollTop() + $(window).height() > 900) {
+			// 		count = 1;
+			// 		console.log("working"+count);
+			// 		break;
+			// 	}
+			// }
 			// if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 			// 	alert("near bottom!");
 			// }

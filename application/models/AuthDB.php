@@ -8,6 +8,7 @@ class AuthDB extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->user = 'st_users';
+        $this->profile = 'st_profile';
     }
 
     public function check_credential($data)
@@ -23,6 +24,17 @@ class AuthDB extends CI_Model {
             }
         }
         return false;
+    }
+
+    public function registerStudent($users, $profile)
+    {
+        if($this->db->insert($this->user, $users)) {
+            $profile['users_id'] = $this->db->insert_id();
+            $this->db->insert($this->profile, $profile);
+            return true;
+        }else {
+            return false;
+        }
     }
 }
 ?>

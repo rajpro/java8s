@@ -28,6 +28,17 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="<?=base_url('assets')?>/css/custom.css" rel="stylesheet">
+	<style>
+		#top_menu {
+			position:relative;
+		}
+		#collapseProfile {
+			position: absolute;
+			left: -100px;
+			top: 59px;
+			width: 200px;
+		}
+	</style>
 
 </head>
 
@@ -47,9 +58,37 @@
 				<span class="badge bg-warning">0</span>
 				<i class="fa fa-2x fa-cart-plus"></i>
 			</a></li>
-			<li><a href="<?=base_url('auth/login')?>" class="login-two">
+			<?php if(!empty($_SESSION['logged_in'])): ?>
+			<li><a class="login-two">
+				<i class="fa fa-2x fa-user" data-toggle="collapse" href="#collapseProfile" role="button" aria-expanded="false" aria-controls="collapseProfile"></i>
+			</a>
+			</li>
+			<div class="collapse" id="collapseProfile">
+				<div class="card 	">
+					<table class="table">
+						<tr>
+							<td>
+								<a href="#">Profile</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">Enrolled</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">logout</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<?php else: ?>
+			<li><a href="<?=base_url('auth/login')?>" class="login-two" >
 				<i class="fa fa-2x fa-lock"></i>
 			</a></li>
+			<?php endif; ?>
 		</ul>
 		<!-- /top_menu -->
 		<a href="#menu" class="btn_mobile">

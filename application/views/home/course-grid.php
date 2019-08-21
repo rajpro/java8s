@@ -43,7 +43,7 @@
     <div class="container margin_60_35">
         <div class="row">
             <!-- /box_grid -->
-            <?php for($i=0;$i<6;$i++): ?>
+            <?php if(!empty($course_details)):foreach($course_details as $value): ?>
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="box_grid wow">
                     <figure class="block-reveal">
@@ -51,14 +51,14 @@
                         <a href="#0" class="wish_bt">
                             <i class="fa fa-heart"></i>
                         </a>
-                        <a href="course-detail.html"><img src="<?=base_url('assets')?>/img/course__list_5.jpg" class="img-fluid" alt=""></a>
+                        <a href="<?=base_url('course-detail/'.$value['p_url'])?>"><img src="<?=base_url('assets')?>/img/course__list_5.jpg" class="img-fluid" alt=""></a>
                         <div class="price">$45</div>
                         <div class="preview"><span>Preview course</span></div>
                     </figure>
                     <div class="wrapper">
-                        <small>Category</small>
-                        <h3>Decore tractatos</h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+                        <!-- <small>Category</small> -->
+                        <h3><?=$value['p_title']?></h3>
+                        <p><?=$value['p_excerpt_content']?></p>
                         <div class="rating"><i class="fa fa-star voted"></i><i class="fa fa-star voted"></i><i class="fa fa-star voted"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <small>(145)</small></div>
                     </div>
                     <ul>
@@ -68,7 +68,7 @@
                     </ul>
                 </div>
             </div>
-            <?php endfor; ?>
+            <?php endforeach;endif; ?>
         </div>
         <!-- /row -->
         <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p>

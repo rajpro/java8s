@@ -177,7 +177,7 @@
         </div>
         <!-- /carousel -->
         <div class="container">
-            <p class="btn_home_align"><a href="courses-grid.html" class="btn_1 rounded">View all courses</a></p>
+            <p class="btn_home_align"><a href="<?=base_url('courses')?>" class="btn_1 rounded">View all courses</a></p>
         </div>
         <!-- /container -->
         <hr>
