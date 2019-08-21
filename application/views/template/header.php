@@ -38,6 +38,16 @@
 			top: 59px;
 			width: 200px;
 		}
+		#sidebar h6 {
+			font-size:.8125rem;
+		}
+		.box_list_silan {
+			background-color: #fff;
+			display: block;
+			position: relative;
+			margin-bottom: 30px;
+			min-height: 310px;
+		}
 	</style>
 
 </head>

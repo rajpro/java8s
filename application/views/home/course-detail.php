@@ -50,7 +50,7 @@
                                         <div class="list_lessons">
                                             <ul>
                                                 <?php if($cl['s_lession']):foreach($cl['s_lession'] as $sl):?>
-                                                <li><a href="<?=$sl['p_url']?>" class=""> <?=$sl['p_title']?> </a><span>00:00</span></li>
+                                                <li><a href="<?=base_url('lesson/'.$course_detail['p_url'].'/'.$sl['p_url'])?>" class=""> <?=$sl['p_title']?> </a><span>00:00</span></li>
                                                 <?php endforeach;endif;?>
                                             </ul>
                                         </div>

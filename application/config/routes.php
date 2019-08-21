@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['course-detail/(:any)'] = 'home/course_detail/$1';
 $route['courses'] = 'home/courses';
 $route['courses/(:num)'] = 'home/courses/$1';
+$route['lesson/(:any)/(:any)'] = 'home/lesson/$1/$2';

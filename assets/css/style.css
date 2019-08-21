@@ -3192,32 +3192,20 @@ a.boxed_list {
 }
 
 .box_list ul li {
-	display: inline-block;
-	margin-right: 15px
+	display: block;
+	padding:7px 0;
 }
 
-.box_list ul li:last-child {
-	margin-right: 0;
-	float: right
+.box_list ul li a {
+	padding:5px 0;
 }
 
-.box_list ul li:last-child a {
-	background: #fff;
-	border: 2px solid #662d91;
-	color: #662d91;
-	padding: 5px 20px;
-	font-weight: 500;
-	line-height: 1;
-	transition: all .3s ease-in-out;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	-ms-border-radius: 30px;
-	border-radius: 30px
+.box_list ul li a:hover {
+	color: #262c2d;
 }
 
-.box_list ul li:last-child a:hover {
-	background: #662d91;
-	color: #fff
+#list_sidebar #description {
+	box-shadow: 0 0 30px 0 rgba(0, 0, 0, .1);
 }
 
 #list_sidebar .box_list,

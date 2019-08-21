@@ -35,6 +35,16 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer', $data);
 	}
 
+	public function lesson($course, $lession)
+	{
+		$data['courses'] = $this->HomeDB->courses();
+		$data['course_lessons'] = $this->HomeDB->course_lessons($course);
+		$data['lesson_detail'] = $this->HomeDB->lesson_detail($lession);
+		$this->load->view('template/header', $data);
+		$this->load->view('home/read', $data);
+		$this->load->view('template/footer', $data);
+	}
+
 	public function cart($url="")
 	{
 		$data['page'] = 'theia-exception';
