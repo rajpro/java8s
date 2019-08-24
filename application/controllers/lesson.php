@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Course extends CI_Controller {
+class Lesson extends CI_Controller {
 
     public function __construct() {
 		parent::__construct();
 		if($this->myauthentication->internal_check()){
 			redirect(base_url());
 		}
-		$this->load->model("CourseDB");
+		$this->load->model("LessonDB");
     }
     
     public function index()
 		{
-		$data['results'] = $this->CourseDB->pagination();
+		$data['results'] = $this->LessonDB->pagination();
 		$this->load->view('template/admin/header');
-		$this->load->view('course/index', $data);
+		$this->load->view('lesson/index', $data);
 		$this->load->view('template/admin/footer');
     }
     

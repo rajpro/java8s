@@ -1,16 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CourseDB extends CI_Model {
+class CommentDB extends CI_Model {
 
     public $result;
 
     public function __construct() {
         parent::__construct();
+        $this->comment = 'st_comment';
         $this->post = 'st_post';
-        $this->section = 'st_section';
-        $this->section_item = 'st_section_item';
-        $this->setting = 'st_setting';
+    }
+
+    public function findPost($id) {
+        $result = $this->db->get_where($this->post, ['p_id'=>$id])->row_array();
+        if($result['p_content_type']=='course') {
+            return 'course-detail/'.$result['p_url'];
+        }else {
+            return 'lesson/'.$result['p_url'];
+        }
     }
 
     public function findById($id) {
@@ -23,39 +30,13 @@ class CourseDB extends CI_Model {
     }
 
     public function save($data) {
-        if($this->db->insert($this->post, $data)) {
-            return $this->db->insert_id();
-        }else {
-            return false;
-        }
+        return $this->db->insert($this->comment, $data);
+        
     }
 
     public function update($data) {
         $this->db->where('p_id', $data['p_id']);
         return $this->db->update($this->post, $data);
-    }
-
-    public function update_settings($pid, $data) {
-        $this->db->where('referral', $pid);
-        $this->db->where('name', 'post_setting');
-        return $this->db->update($this->setting, $data);
-    }
-
-    public function saveSection($data) {
-        return $this->db->insert($this->section, $data);
-    }
-
-    public function saveSectionItem($data) {
-        return $this->db->insert($this->section_item, $data);
-    }
-
-    public function sections($id) {
-        $this->db->select("s_id, s_name, s_description, (SELECT COUNT(si_id) FROM st_section_item WHERE si_section_id=st_section.s_id) as lessons ");
-        return $this->db->get_where($this->section, ['s_course_id'=>$id])->result_array();
-    }
-
-    public function save_settings($data) {
-        return $this->db->insert($this->setting, $data);
     }
 }
 ?>

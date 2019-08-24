@@ -11,8 +11,9 @@ class Myauthentication {
 
     public function check_permission() {
         if (!empty($this->CI->session->userdata['logged_in']) && $this->CI->session->userdata['logged_in'] == TRUE) {
-            redirect(base_url('dashbaord'));
+            return true;
         }
+        return false;
     }
 
     public function internal_check() {

@@ -10,6 +10,8 @@ class HomeDB extends CI_Model {
         $this->post = 'st_post';
         $this->section_item = 'st_section_item';
         $this->setting = 'st_setting';
+        $this->comment = 'st_comment';
+        $this->profile = 'st_profile';
     }
 
     public function courses() {
@@ -47,6 +49,24 @@ class HomeDB extends CI_Model {
             }
         }
         return $query;
+    }
+
+    public function comments($url) {
+        $post = $this->db->get_where($this->post, ['p_url'=>$url])->row_array();
+        $comments = $this->db->get_where($this->comment, ['c_post_id'=>$post['p_id'], 'c_parent'=>0])->result_array();
+        $comments = $this->_comments($comments);
+        foreach($comments as $key => $value) {
+            $comments[$key]['parent'] = $this->_comments($value['parent']);
+        }
+        return $comments;
+    }
+
+    protected function _comments($comments) {
+        foreach($comments as $key => $value) {
+            $comments[$key]['user_profile'] = $this->db->get_where($this->profile, ['users_id'=>$value['c_user_id']])->row_array();
+            $comments[$key]['parent'] = $this->db->get_where($this->comment, ['c_parent'=>$value['c_id']])->result_array();
+        }
+        return $comments;
     }
 }
 ?>

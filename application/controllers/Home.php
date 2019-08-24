@@ -30,6 +30,7 @@ class Home extends CI_Controller {
 		$data['courses'] = $this->HomeDB->courses();
 		$data['course_detail'] = $this->HomeDB->course_detail($url);
 		$data['course_lessons'] = $this->HomeDB->course_lessons($url);
+		$data['comments'] = $this->HomeDB->comments($url);
 		$this->load->view('template/header', $data);
 		$this->load->view('home/course-detail', $data);
 		$this->load->view('template/footer', $data);

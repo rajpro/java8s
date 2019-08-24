@@ -88,7 +88,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="#">logout</a>
+								<a href="<?=base_url('auth/logout')?>">logout</a>
 							</td>
 						</tr>
 					</table>
