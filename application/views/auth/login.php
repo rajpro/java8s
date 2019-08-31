@@ -44,7 +44,7 @@
         <div class="container">
             <aside>
                 <figure>
-                    <a href="index.html"><img src="<?=base_url('assets')?>/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+                    <a href="<?=base_url()?>"><img src="<?=base_url('assets')?>/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
                 </figure>
                 <?php 
                     if(!empty($this->session->userdata('success'))){

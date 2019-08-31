@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Rajesh Sardar">
-  <title>Silan Technology</title>
+  <title>Java8s</title>
 	
   <!-- Favicons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -51,7 +51,7 @@
           </a>
         </li>
 
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Master">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Master">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#master" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-archive"></i>
             <span class="nav-link-text">Master</span>
@@ -60,7 +60,7 @@
             <li>
               <a href="<?=base_url('course')?>">Course</a>
             </li>
-			<li>
+			      <li>
               <a href="<?=base_url('lesson')?>">Lesson</a>
             </li>
             <li>
@@ -68,6 +68,27 @@
             </li>
             <li>
               <a href="<?=base_url('question')?>">Questions</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Setting">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#setting" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-archive"></i>
+            <span class="nav-link-text">Setting</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="setting">
+            <li>
+              <a href="<?=base_url('setting/seo')?>">SEO</a>
+            </li>
+            <li>
+              <a href="<?=base_url('setting/adsense')?>">Google Adsense</a>
+            </li>
+            <li>
+              <a href="<?=base_url('setting/ad')?>">Another Ad</a>
+            </li>
+            <li>
+              <a href="<?=base_url('setting/popular_course')?>">Popular Course</a>
             </li>
           </ul>
         </li>

@@ -5,9 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Udema a modern educational site template">
-    <meta name="author" content="Ansonika">
     <title>Java8s | Boostup you'r Career with us.</title>
+
+	<meta property="og:url" content="http://silantechnology.com" />
+    <meta property="og:title" content="<title>" />
+    <meta property="og:site_name" content="silantechnology.com" />
+    <meta property="og:description" content="<Desc>" />
+    <meta property="og:image" content="<featcher image>" />
+    <meta name="keywords" content="<keywords>" />
+    <meta name="description" content="<description>" />
+	<meta name="author" content="Silan Technology">
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -28,27 +35,6 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="<?=base_url('assets')?>/css/custom.css" rel="stylesheet">
-	<style>
-		#top_menu {
-			position:relative;
-		}
-		#collapseProfile {
-			position: absolute;
-			left: -100px;
-			top: 59px;
-			width: 200px;
-		}
-		#sidebar h6 {
-			font-size:.8125rem;
-		}
-		.box_list_silan {
-			background-color: #fff;
-			display: block;
-			position: relative;
-			margin-bottom: 30px;
-			min-height: 310px;
-		}
-	</style>
 
 </head>
 

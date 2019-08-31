@@ -20,7 +20,14 @@ class HomeDB extends CI_Model {
     }
 
     public function list_all_course_detail() {
-        $this->db->select("p_id, p_title, p_url, p_excerpt_content");
+        $this->db->select("p_id, p_title, p_url, p_excerpt_content, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting, (SELECT value FROM st_setting WHERE name='featured_image' AND referral=st_post.p_id) as featured_image");
+        return $this->db->get_where($this->post, ['p_status'=>1, 'p_content_type'=>'course'])->result_array();
+    }
+
+    public function popularCourse() {
+        $setting = $this->db->get_where($this->setting, ['name'=>'popular_course'])->row_array();
+        $this->db->select("p_id, p_title, p_url, p_excerpt_content, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting, (SELECT value FROM st_setting WHERE name='featured_image' AND referral=st_post.p_id) as featured_image");
+        $this->db->where_in('p_id', (array)json_decode($setting['value']));
         return $this->db->get_where($this->post, ['p_status'=>1, 'p_content_type'=>'course'])->result_array();
     }
 
@@ -29,7 +36,7 @@ class HomeDB extends CI_Model {
     }
 
     public function course_detail($url) {
-        $this->db->select("p_id, p_title, p_url, p_content, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id IN (SELECT s_id FROM st_section WHERE s_course_id=st_post.p_id)) as lesson_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting");
+        $this->db->select("p_id, p_title, p_url, p_content, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id IN (SELECT s_id FROM st_section WHERE s_course_id=st_post.p_id)) as lesson_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting, (SELECT value FROM st_setting WHERE name='featured_image' AND referral=st_post.p_id) as featured_image");
         return $this->db->get_where($this->post, ['p_url'=>$url])->row_array();
     }
 

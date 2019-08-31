@@ -19,7 +19,7 @@ class CourseDB extends CI_Model {
     }
 
     public function pagination() {
-        return $this->db->query("SELECT p_id, p_title, p_comment_count, p_modified_date, p_status, (SELECT COUNT(s_id) FROM st_section WHERE s_course_id=st_post.p_id) AS p_section_count, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id=st_post.p_id) AS p_section_item_count, (SELECT value FROM st_setting WHERE referral=st_post.p_id) AS p_setting FROM st_post WHERE p_content_type='course'")->result_array();
+        return $this->db->query("SELECT p_id, p_title, p_comment_count, p_modified_date, p_status, (SELECT COUNT(s_id) FROM st_section WHERE s_course_id=st_post.p_id) AS p_section_count, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id=st_post.p_id) AS p_section_item_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) AS p_setting FROM st_post WHERE p_content_type='course'")->result_array();
     }
 
     public function save($data) {
@@ -39,6 +39,19 @@ class CourseDB extends CI_Model {
         $this->db->where('referral', $pid);
         $this->db->where('name', 'post_setting');
         return $this->db->update($this->setting, $data);
+    }
+
+    public function update_image($pid, $data) {
+        $featured = $this->db->get_where($this->setting, ['name'=>'featured_image', 'referral'=>$pid])->row_array();
+        if (!empty($featured)) {
+            unlink('featured_image/'.$featured['value']);
+            $this->db->where('referral', $pid);
+            $this->db->where('name', 'featured_image');
+            return $this->db->update($this->setting, $data);
+        } else {
+            $data['referral'] = $pid;
+            $this->save_settings($data);
+        }
     }
 
     public function saveSection($data) {

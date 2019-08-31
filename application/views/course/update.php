@@ -14,7 +14,7 @@
                     <h3 class="float-left">Update Course</h3>
                 </div>
 
-                <?=form_open()?>
+                <?=form_open_multipart()?>
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" value="<?=set_value('title', $model['p_title'])?>" id="title" placeholder="Enter Title">
@@ -42,6 +42,11 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="col-md-6 mt-3">
                                 <input type="checkbox" checked name="comment_status"> Allow Comment
+                                <hr>
+                                <div class="form-group">
+                                    <label for="title">Featured Image</label><br>
+                                    <input type="file" name="featured_image">
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

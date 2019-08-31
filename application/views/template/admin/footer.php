@@ -46,7 +46,7 @@
 
     <script>
       // CK Editor Initialization
-      CKEDITOR.replace( 'content' );
+      CKEDITOR.replace( 'content');
     </script>
 	
 </body>

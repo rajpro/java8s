@@ -14,7 +14,7 @@
                     <h3 class="float-left">Add Course</h3>
                 </div>
 
-                <?=form_open(base_url('course/create'))?>
+                <?=form_open_multipart(base_url('course/create'))?>
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title">
@@ -40,6 +40,11 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="col-md-6 mt-3">
                                 <input type="checkbox" checked name="comment_status"> Allow Comment
+                                <hr>
+                                <div class="form-group">
+                                    <label for="title">Featured Image</label><br>
+                                    <input type="file" name="featured_image">
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

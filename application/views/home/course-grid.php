@@ -51,8 +51,14 @@
                         <a href="#0" class="wish_bt">
                             <i class="fa fa-heart"></i>
                         </a>
-                        <a href="<?=base_url('course-detail/'.$value['p_url'])?>"><img src="<?=base_url('assets')?>/img/course__list_5.jpg" class="img-fluid" alt=""></a>
-                        <div class="price">$45</div>
+                        <a href="<?=base_url('course-detail/'.$value['p_url'])?>"><img src="<?=(!empty(base_url('featured_image/'.$value['featured_image']))?base_url('featured_image/'.$value['featured_image']):'')?>" class="img-fluid" alt=""></a>
+                        <?php 
+                            $post_setting = json_decode($value['setting']);
+                        ?>
+                        <div class="price">
+                            <i class="fa fa-rupee" style="font-size:19px;"></i>
+                            <?=$post_setting->sale_price?>
+                        </div>
                         <div class="preview"><span>Preview course</span></div>
                     </figure>
                     <div class="wrapper">

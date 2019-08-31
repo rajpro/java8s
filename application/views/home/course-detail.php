@@ -221,7 +221,7 @@
                 <aside class="col-lg-4" id="sidebar">
                     <div class="box_detail">
                         <figure>
-                            <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="<?=base_url('assets')?>/img/course_1.jpg" alt="" class="img-fluid"><span>View course preview</span></a>
+                            <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="fa fa-play"></i><img src="<?=base_url('featured_image/'.$course_detail['featured_image'])?>" alt="" class="img-fluid"><span>View course preview</span></a>
                         </figure>
                         <div class="price">
                             <?php $course_detail['setting'] = json_decode($course_detail['setting']);?>
