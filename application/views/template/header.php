@@ -35,6 +35,21 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="<?=base_url('assets')?>/css/custom.css" rel="stylesheet">
+	<style>
+		#description blockquote {
+			padding: 30px 0px 30px 25px;
+			border-left: 5px solid #118c097d;
+			margin-left: 30px;
+		}
+		#description ul {
+			list-style: disc;
+			margin-left: 35px;
+		}
+		#description ol {
+			list-style: decimal;
+			margin-left: 35px;
+		}
+	</style>
 
 </head>
 

@@ -36,7 +36,7 @@ class HomeDB extends CI_Model {
     }
 
     public function course_detail($url) {
-        $this->db->select("p_id, p_title, p_url, p_content, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id IN (SELECT s_id FROM st_section WHERE s_course_id=st_post.p_id)) as lesson_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting, (SELECT value FROM st_setting WHERE name='featured_image' AND referral=st_post.p_id) as featured_image");
+        $this->db->select("p_id, p_title, p_url, p_content, p_comment_status, (SELECT COUNT(si_id) FROM st_section_item WHERE si_post_id IN (SELECT s_id FROM st_section WHERE s_course_id=st_post.p_id)) as lesson_count, (SELECT value FROM st_setting WHERE name='post_setting' AND referral=st_post.p_id) as setting, (SELECT value FROM st_setting WHERE name='featured_image' AND referral=st_post.p_id) as featured_image");
         return $this->db->get_where($this->post, ['p_url'=>$url])->row_array();
     }
 
@@ -60,7 +60,7 @@ class HomeDB extends CI_Model {
 
     public function comments($url) {
         $post = $this->db->get_where($this->post, ['p_url'=>$url])->row_array();
-        $comments = $this->db->get_where($this->comment, ['c_post_id'=>$post['p_id'], 'c_parent'=>0])->result_array();
+        $comments = $this->db->order_by('c_id', 'DESC')->get_where($this->comment, ['c_post_id'=>$post['p_id'], 'c_parent'=>0])->result_array();
         $comments = $this->_comments($comments);
         foreach($comments as $key => $value) {
             $comments[$key]['parent'] = $this->_comments($value['parent']);

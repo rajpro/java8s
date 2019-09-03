@@ -43,3 +43,6 @@
 .box_detail figure a i:before {
     margin-left:10px;
 }
+#description p {
+    display: table;
+}

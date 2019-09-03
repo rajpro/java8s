@@ -65,26 +65,31 @@
 	
 	<!-- COMMON SCRIPTS -->
     <script src="<?=base_url('assets')?>/js/jquery-2.2.4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
     <script src="<?=base_url('assets')?>/js/common_scripts.js"></script>
     <script src="<?=base_url('assets')?>/js/main.js"></script>
 	<script src="<?=base_url('assets')?>/js/validate.js"></script>
 	<script>
-		$(window).scroll(function() {
-			var count = 0;
-			// console.log($(document).height());
-			// console.log($(window).height());
-			// console.log($(window).scrollTop() + $(window).height());
-			// if(count==0) {
-			// 	console.log("counting"+count);
-			// 	if($(window).scrollTop() + $(window).height() > 900) {
-			// 		count = 1;
-			// 		console.log("working"+count);
-			// 		break;
-			// 	}
-			// }
-			// if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-			// 	alert("near bottom!");
-			// }
+		// Comment Verification
+		$(function() {
+			$("form[name='comment']").validate({
+				rules: {
+					name: "required",
+					content: "required",
+					email: {
+						required: true,
+						email: true
+					}
+				},
+				messages: {
+					name: "Please enter your Full Name",
+					content: "Please enter your Message",
+					email: "Please enter a valid email address"
+				},
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
 		});
 	</script>
 	

@@ -27,7 +27,6 @@
                         <!-- /row -->
                     </section>
                     <!-- /section -->
-                    
                     <section id="lessons">
                         <div class="intro_title">
                             <h2>Lessons</h2>
@@ -131,20 +130,28 @@
                         <hr>
 
                         <h2>Comment</h2>
-                        <?php if(!empty($this->session->userdata('logged_in'))):?>
-                        <?=form_open(base_url('comment/add'))?>
+                        <?php if($course_detail['p_comment_status']==1): ?>
+                        <?=form_open(base_url('comment/add'),["name"=>"comment"])?>
                         <div class="row mb-4">
-                            <input type="hidden" name="userid" value="<?=$this->session->userdata('userid')?>">
+                            <input type="hidden" name="userid" value="<?=(!empty($this->session->userdata('userid'))?$this->session->userdata('userid'):0)?>">
                             <input type="hidden" name="postid" value="<?=$course_detail['p_id']?>">
+                            <?php if(empty($this->session->userdata('logged_in'))):?>
+                            <div class="form-group col-md-6">
+                                <input type="text" name="name" placeholder="Name" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="email" placeholder="Email" class="form-control">
+                            </div>
+                            <?php endif; ?>
                             <div class="form-group col-md-12">
-                                <textarea class="form-control" name="content" rows="6" ></textarea>
+                                <textarea class="form-control" name="content" rows="6" placeholder="Message" ></textarea>
                             </div>
                             <div class="col-md-12">
                                 <input type="submit" class="btn btn-primary btn-sm float-right">
                             </div>
                         </div>
                         </form>
-                        <?php endif;?>
+                        <?php endif; ?>
 
                         <div class="reviews-container">
                             <?php if(!empty($comments)):foreach($comments as $comment): ?>
@@ -176,8 +183,14 @@
                                         <input type="hidden" name="parent" value="<?=$comment['c_id']?>">
                                         <input type="hidden" name="userid" value="<?=$this->session->userdata('userid')?>">
                                         <input type="hidden" name="postid" value="<?=$course_detail['p_id']?>">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="name" placeholder="Name" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="email" name="email" placeholder="Email" class="form-control">
+                                        </div>
                                         <div class="form-group col-md-12">
-                                            <textarea class="form-control" name="content" rows="6" ></textarea>
+                                            <textarea class="form-control" name="content" rows="6" placeholder="Message"></textarea>
                                         </div>
                                         <div class="col-md-12">
                                             <input type="submit" class="btn btn-primary btn-sm float-right">
@@ -225,9 +238,14 @@
                         </figure>
                         <div class="price">
                             <?php $course_detail['setting'] = json_decode($course_detail['setting']);?>
-                            <i class="fa fa-rupee" style="font-size:27px;"></i><?=$course_detail['setting']->sale_price?>
+                            <?php 
+                                $sp = $course_detail['setting']->sale_price;
+                                echo ($sp==0?'Free':"<i class='fa fa-rupee' style='font-size:27px;'></i>".$sp);
+                            ?>
                             <span class="original_price">
-                                <em><i class="fa fa-rupee" style="font-size:14px;"></i><?=$course_detail['setting']->price?></em>
+                                <em><i class="fa fa-rupee" style="font-size:14px;"></i>
+                                    <?=$course_detail['setting']->price?>
+                                </em>
                                 <?php 
                                     $sv = $course_detail['setting']->price - $course_detail['setting']->sale_price;
                                     $discount = (100/$course_detail['setting']->price*$sv);
@@ -235,7 +253,7 @@
                                 ?>
                             </span>
                         </div>
-                        <a href="#" data-purchase="<?=$course_detail['p_id']?>" class="btn_1 full-width">Purchase</a>
+                        <a href="#" data-purchase="<?=$course_detail['p_id']?>" class="btn_1 full-width">Enroll</a>
                         <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
                         <div id="list_feat">
                             <h3>What's includes</h3>

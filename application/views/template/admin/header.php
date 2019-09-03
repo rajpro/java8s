@@ -61,7 +61,7 @@
               <a href="<?=base_url('course')?>">Course</a>
             </li>
 			      <li>
-              <a href="<?=base_url('lesson')?>">Lesson</a>
+              <a href="<?=base_url('sections')?>">Lesson</a>
             </li>
             <li>
               <a href="<?=base_url('quizze')?>">Quizzes</a>
